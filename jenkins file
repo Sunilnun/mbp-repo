@@ -1,11 +1,22 @@
 pipeline{
     agent any
+    environment{
+        DEPLOY_TO = 'production'
+    }
     stages{
-        stage('this is first mbp stage'){
-            steps{
-                echo 'welcome to the mbp stage'
+        stage('this stage is defining for the allOf when condition'){
+            when{
+                allOf{
+                    
+                 environment name: 'DEPLOY_TO', value: 'production'
+                 expression { BRANCH_NAME == ~ /'(docker|kubernetes)'}
 
-            }           
+                }
+                
+            }
+            steps{
+                echo 'all the conditions of the when met successfully and depoying to prod'
+            }
         }
     }
 }
