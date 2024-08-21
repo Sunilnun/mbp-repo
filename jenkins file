@@ -14,10 +14,10 @@ pipeline{
                 }
                 
             }
-            
             steps{
-                echo 'all the conditions of the when met successfully and depoying to prod'
+                echo 'all conditions met'
             }
+
         }
     }
 }
