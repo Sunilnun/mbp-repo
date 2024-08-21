@@ -3,7 +3,7 @@ pipeline{
     stages{
         stage('when blcok with defaults'){
             when{
-                expression {BRANCH_NAME ==~ /{docker|kubernetes}}
+                expression {BRANCH_NAME ==~ /(docker|kubernetes)}
             }
             steps{
                 echo 'deploying to kubernetes'
