@@ -1,23 +1,21 @@
 pipeline{
     agent any
     environment{
-        DEPLOY_TO = 'production'
+        DEPLOY_TO = 'Production'
     }
     stages{
-        stage('this stage is defining for the allOf when condition'){
+        stage('any of stage'){
             when{
                 allOf{
-
-                 environment name: 'DEPLOY_TO', value: 'production'
-                 expression { BRANCH_NAME ==~ /'(docker|kubernetes)'}
-
+                    expression { BRANCH_NAME == ~ /(docker|kubernetes)/}
+                    environment name: 'DEPLOY_TO', value: 'Production'
+                  // hear it will get succed because environment is getting matched
                 }
-                
+
             }
             steps{
-                echo 'all conditions met'
+                echo 'when stage met all the cretatia'
             }
-
         }
     }
 }
