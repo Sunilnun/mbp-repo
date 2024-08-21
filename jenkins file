@@ -1,11 +1,13 @@
 pipeline{
     agent any
     stages{
-        stage('this is first mbp stage'){
+        stage('when blcok with defaults'){
+            when{
+                expression {BRANCH_NAME ==~ /{docker|kubernetes}}
+            }
             steps{
-                echo 'welcome to the mbp stage'
-
-            }           
+                echo 'deploying to kubernetes'
+            }
         }
     }
 }
