@@ -1,12 +1,20 @@
 pipeline{
     agent any
+    environment{
+        DEPLOY_TO = 'Production'
+    }
     stages{
-        stage('when blcok with defaults'){
+        stage('any of stage'){
             when{
-                expression {BRANCH_NAME ==~ /{docker|kubernetes}}
+                allOf{
+                    expression { BRANCH_NAME == ~ /(docker|kubernetes)/}
+                    environment name: 'DEPLOY_TO', value: 'Productjkuion'
+
+                }
+
             }
             steps{
-                echo 'deploying to kubernetes'
+                echo 'when stage met all the cretatia'
             }
         }
     }
