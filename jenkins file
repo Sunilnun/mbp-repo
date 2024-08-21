@@ -8,7 +8,7 @@ pipeline{
             when{
                 allOf{
                     expression { BRANCH_NAME == ~ /(docker|kubernetes)/}
-                    environment name: 'DEPLOY_TO', value: 'Productjkuion'
+                    environment name: 'DEPLOY_TO', value: 'Production'
 
                 }
 
