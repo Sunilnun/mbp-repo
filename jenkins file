@@ -6,9 +6,9 @@ pipeline{
     stages{
         stage('any of stage'){
             when{
-                anyOf{
+                allOf{
                     expression { BRANCH_NAME == ~ /(docker|kubernetes)/}
-                    environment name: 'DEPLOY_TO', value: 'Production'
+                    environment name: 'DEPLOY_TO' , value: 'Production'
                   
                 }
 
